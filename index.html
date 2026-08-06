@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandakishor Kalagarla | AI Engineer Portfolio</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Font (Outfit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">K.Nandakishor</div>
+
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="home-section">
+            <div class="home-content glass-card hidden">
+                <p class="intro-text">Hello, I'm</p>
+                <h1>Nandakishor Kalagarla</h1>
+                <h2>
+                    <span class="typed-title"></span><span class="cursor">|</span>
+                </h2>
+                <p class="home-description">
+                    I design modern AI solutions using Python, Machine Learning, Generative AI, RAG,
+                    Gemini API, and SQL. I love building intelligent automation that helps people work smarter.
+                </p>
+
+                <div class="home-buttons">
+                    <a href="#projects" class="btn primary-btn">View Projects</a>
+                    <a href="#contact" class="btn secondary-btn">Let&apos;s Connect</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section hidden">
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-container">
+                <div class="glass-card mb-30">
+                    <p>
+                        I am a Final Year B.Tech student in Artificial Intelligence and Machine Learning
+                        at Kakinada Institute of Engineering and Technology. Focused on becoming
+                        an AI Developer / Junior AI Engineer.
+                    </p>
+                    <p>
+                        I am learning Python, SQL, Machine Learning, Generative AI, RAG, LLMs,
+                        and AI application development. My goal is to build real-world
+                        AI solutions that solve practical problems.
+                    </p>
+                </div>
+
+                <div class="about-cards">
+                    <div class="glass-card about-card">
+                        <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
+                        <h3>AI Development</h3>
+                        <p>Building AI-powered applications using modern AI tools and APIs.</p>
+                    </div>
+
+                    <div class="glass-card about-card">
+                        <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
+                        <h3>Machine Learning</h3>
+                        <p>Learning ML fundamentals, preprocessing, and model evaluation.</p>
+                    </div>
+
+                    <div class="glass-card about-card">
+                        <div class="icon-wrapper"><i class="fas fa-comments"></i></div>
+                        <h3>AI Chatbots</h3>
+                        <p>Creating chatbot systems using RAG, LLMs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section hidden">
+            <h2 class="section-title">Technical Skills</h2>
+
+            <div class="skills-grid">
+                <div class="glass-card skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <p>Programming, automation & AI.</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Supervised learning & evaluation.</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Generative AI</h3>
+                    <p>LLMs, prompts, Gemini API.</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Chatbots</h3>
+                    <p>Smart assistants & RAG systems.</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>HTML & CSS</h3>
+                    <p>Responsive modern websites.</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL</h3>
+                    <p>Database queries & management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section hidden">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="projects-container">
+                <div class="glass-card project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-building-user"></i>
+                    </div>
+                    <h3>Smart Navigator for Guidelines and Policy Support</h3>
+                    <p>
+                        An AI-based chatbot system that helps employees access company policies
+                        and guidelines using document-based question answering.
+                    </p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>RAG</span>
+                        <span>Gemini API</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Training Section -->
+        <section id="education" class="section hidden">
+            <h2 class="section-title">Education & Certifications</h2>
+
+            <div class="education-container">
+                <div class="glass-card education-card">
+                    <div class="date-badge">2023 - 2027</div>
+                    <h3>B.Tech in AIML</h3>
+                    <h4>Kakinada Institute of Engineering and Technology</h4>
+                    <p>CGPA: 7.77 / 10</p>
+                </div>
+
+                <div class="glass-card education-card">
+                    <div class="date-badge">2024 - 2025</div>
+                    <h3>Foundations of Modern Machine Learning</h3>
+                    <h4>IIIT Hyderabad / iHub Data</h4>
+                    <p>Completed FMML training focused on machine learning fundamentals.</p>
+                </div>
+
+                 <div class="glass-card education-card">
+                    <div class="date-badge">Certifications</div>
+                    <h3>Various Online Courses</h3>
+                    <p>Basics of Python (Infosys), DSA in Python (SkillUp).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section hidden">
+            <h2 class="section-title">Contact Me</h2>
+            <p class="contact-text">
+                I am open to AI Developer, Junior AI Engineer, and AI Internship opportunities.
+            </p>
+
+            <div class="contact-container">
+                <a href="mailto:kalagarlanandakishor@gmail.com" class="glass-card contact-card">
+                    <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <p>kalagarlanandakishor@gmail.com</p>
+                </a>
+                <a href="https://github.com/Nandakishor999" target="_blank" class="glass-card contact-card">
+                    <div class="icon-box"><i class="fab fa-github"></i></div>
+                    <h3>GitHub</h3>
+                    <p>View My Projects</p>
+                </a>
+                <a href="https://www.linkedin.com/in/nandakishor-kalagarla-a8b33b307/" target="_blank" class="glass-card contact-card">
+                    <div class="icon-box"><i class="fab fa-linkedin"></i></div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect With Me</p>
+                </a>
+            </div>
+        </section>
+
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </main>
+
+    <footer>
+        <p>&copy; <span class="current-year">2026</span> Nandakishor Kalagarla | AI Engineer</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
