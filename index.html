@@ -1,236 +1,939 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nandakishor Kalagarla | AI Engineer Portfolio</title>
+    <title>Nandakishor Kalagarla | AI Developer Portfolio</title>
+    <meta name="description"
+        content="Aspiring AI Developer and Junior AI Engineer focused on Python, Machine Learning, Generative AI, RAG, and AI-powered applications.">
 
-    <!-- CSS File -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Nandakishor Kalagarla | AI Developer Portfolio">
+    <meta property="og:description"
+        content="Aspiring AI Developer and Junior AI Engineer focused on Python, Machine Learning, Generative AI, RAG, and AI-powered applications.">
+    <meta property="og:type" content="website">
 
-    <!-- Font Awesome Icons -->
+    <!-- Favicon placeholder — replace with your own -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Google Font (Outfit) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Background Animated Shapes -->
-    <div class="bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+
+    <!-- ══════════════════════════════════════════════════════════
+       PAGE LOADER
+       ══════════════════════════════════════════════════════════ -->
+    <div class="page-loader" id="pageLoader" aria-label="Loading">
+        <div class="loader-logo">NK<span class="dot">.</span></div>
+        <div class="loader-bar">
+            <div class="loader-bar-fill"></div>
+        </div>
     </div>
 
-    <!-- Navbar -->
-    <header id="header">
-        <nav class="navbar">
-            <div class="logo">K.Nandakishor</div>
+    <!-- ══════════════════════════════════════════════════════════
+       CUSTOM CURSOR
+       ══════════════════════════════════════════════════════════ -->
+    <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
-            <button class="menu-toggle" aria-label="Toggle navigation" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+    <!-- ══════════════════════════════════════════════════════════
+       SCROLL PROGRESS BAR
+       ══════════════════════════════════════════════════════════ -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════════
+       NAVBAR
+       ══════════════════════════════════════════════════════════ -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <!-- Left: Logo -->
+        <div class="nav-brand">
+            <a href="#hero" class="nav-logo" aria-label="Home">NK<span class="dot">.</span></a>
+            <img src="profile.png" alt="Nandakishor Kalagarla" class="nav-avatar-img">
+            <div class="nav-brand-info">
+                <span class="nav-brand-name">Nandakishor Kalagarla</span>
+                <span class="nav-brand-title">AI Developer / ML Enthusiast</span>
+            </div>
+        </div>
+
+        <!-- Center: Links -->
+        <div class="nav-links" id="navLinks">
+            <a href="#hero" class="active" data-section="hero">Home</a>
+            <a href="#about" data-section="about">About</a>
+            <a href="#skills" data-section="skills">Skills</a>
+            <a href="#projects" data-section="projects">Projects</a>
+            <a href="#experience" data-section="experience">Experience</a>
+            <a href="#education" data-section="education">Education</a>
+            <a href="#contact" data-section="contact">Contact</a>
+        </div>
+
+        <!-- Right: Actions -->
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                <i class="fas fa-moon"></i>
             </button>
+            <!-- Hamburger (mobile) -->
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Full-screen Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+        <a href="#hero" data-mobile-link>Home</a>
+        <a href="#about" data-mobile-link>About</a>
+        <a href="#skills" data-mobile-link>Skills</a>
+        <a href="#projects" data-mobile-link>Projects</a>
+        <a href="#experience" data-mobile-link>Experience</a>
+        <a href="#education" data-mobile-link>Education</a>
+        <a href="#contact" data-mobile-link>Contact</a>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+       FLOATING SOCIAL BUTTONS (Desktop)
+       ══════════════════════════════════════════════════════════ -->
+    <aside class="social-float" aria-label="Social links">
+        <a href="https://github.com/Nandakishor999" target="_blank" rel="noopener" class="social-float-btn"
+            aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/nandakishor-kalagarla-a8b33b307/" target="_blank" rel="noopener"
+            class="social-float-btn" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:kalagarlanandakishor@gmail.com" class="social-float-btn" aria-label="Email" title="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </aside>
 
     <main>
-        <!-- Home Section -->
-        <section id="home" class="home-section">
-            <div class="home-content glass-card hidden">
-                <p class="intro-text">Hello, I'm</p>
-                <h1>Nandakishor Kalagarla</h1>
-                <h2>
-                    <span class="typed-title"></span><span class="cursor">|</span>
-                </h2>
-                <p class="home-description">
-                    I design modern AI solutions using Python, Machine Learning, Generative AI, RAG,
-                    Gemini API, and SQL. I love building intelligent automation that helps people work smarter.
+        <!-- ══════════════════════════════════════════════════════════
+         HERO SECTION
+         ══════════════════════════════════════════════════════════ -->
+        <section class="hero" id="hero" aria-label="Hero">
+            <!-- Hero background particles canvas -->
+            <canvas class="hero-bg-canvas" id="heroBgCanvas" aria-hidden="true"></canvas>
+            <div class="hero-container">
+                <!-- Left Column -->
+                <div class="hero-left">
+                    <div class="hero-profile-row reveal">
+                        <div class="hero-avatar-wrap">
+                            <img src="profile.png" alt="Nandakishor Kalagarla" class="hero-avatar-img">
+                            <span class="hero-avatar-status" title="Available for Opportunities"></span>
+                        </div>
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            Available for Opportunities
+                        </div>
+                    </div>
+
+                    <p class="hero-greeting reveal reveal-delay-1">Hi, I'm</p>
+
+                    <h1 class="hero-name reveal reveal-delay-2">
+                        Nandakishor<br>Kalagarla<span class="dot">.</span>
+                    </h1>
+
+                    <p class="hero-titles reveal reveal-delay-3">
+                        <span id="typewriterText" class="typewriter-text"></span><span
+                            class="typewriter-cursor">|</span>
+                    </p>
+
+                    <p class="hero-desc reveal reveal-delay-4">
+                        Aspiring AI Developer / Junior AI Engineer with hands-on learning in Python, Machine Learning,
+                        Generative
+                        AI, and basic SQL. Interested in building AI-powered applications such as chatbots and
+                        contributing to
+                        real-world AI projects.
+                    </p>
+
+                    <div class="hero-buttons reveal reveal-delay-5">
+                        <a href="#projects" class="btn btn-primary">
+                            Explore My Work <span class="btn-arrow">→</span>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            Let's Connect <span class="btn-arrow">↗</span>
+                        </a>
+                        <a href="./resume.pdf" download class="btn btn-ghost" id="downloadResumeBtn">
+                            Download Resume <span class="btn-arrow">↓</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats reveal reveal-delay-6">
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">Projects</div>
+                            <div class="hero-stat-value"><span class="counter" data-target="3" data-suffix="+">0</span>
+                            </div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">Certifications</div>
+                            <div class="hero-stat-value"><span class="counter" data-target="3" data-suffix="">0</span>
+                            </div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">AI Tools</div>
+                            <div class="hero-stat-value"><span class="counter" data-target="8" data-suffix="+">0</span>
+                            </div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-label">CGPA</div>
+                            <div class="hero-stat-value"><span class="counter" data-target="7.77" data-suffix=""
+                                    data-decimals="2">0</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: AI Visual -->
+                <div class="hero-right">
+                    <div class="ai-visual" id="aiVisual">
+                        <!-- Particles -->
+                        <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+                        <!-- Header -->
+                        <div class="ai-visual-header">
+                            <span class="ai-visual-header-dot"></span>
+                            AI-Powered Application
+                        </div>
+
+                        <!-- AI Assistant Card -->
+                        <div class="ai-card ai-card-assistant" data-parallax="0.03">
+                            <div class="ai-card-assistant-title">
+                                <span class="ai-card-assistant-icon">🤖</span>
+                                Virtual HR
+                            </div>
+                            <div class="ai-input-mock">Ask your policy question...</div>
+                            <div class="ai-response-mock">
+                                Based on the company guidelines document (Section 3.2), employees are entitled to 24
+                                days of annual
+                                leave. This includes...
+                            </div>
+                        </div>
+
+                        <!-- RAG Badge -->
+                        <div class="ai-card ai-card-rag" data-parallax="0.05">
+                            <span class="rag-dot"></span>
+                            <div>
+                                <strong>RAG</strong>
+                                <span class="ai-card-rag-label">Retrieval Augmented Generation</span>
+                            </div>
+                        </div>
+
+                        <!-- Document Chips -->
+                        <div class="ai-card-docs" data-parallax="0.02">
+                            <div class="doc-chip">📄 Policy Documents</div>
+                            <div class="doc-chip">📋 HR Guidelines</div>
+                            <div class="doc-chip">📑 Company Rules</div>
+                        </div>
+
+                        <!-- Code Card -->
+                        <div class="ai-card ai-card-code" data-parallax="0.04">
+                            <span style="color:rgba(255,255,255,0.3)">def</span> get_answer(query)
+                        </div>
+
+                        <!-- Floating Nodes -->
+                        <div class="ai-node ai-node-1"></div>
+                        <div class="ai-node ai-node-2"></div>
+                        <div class="ai-node ai-node-3"></div>
+
+                        <!-- Glow -->
+                        <div class="ai-glow-platform"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-mouse"></div>
+                <span>Scroll to explore</span>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+         ABOUT + SKILLS SECTION
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section" id="about" aria-label="About and Skills">
+            <div class="section-container">
+                <div class="section-label reveal">
+                    <span class="section-label-line"></span> About & Skills
+                </div>
+
+                <div class="about-skills-grid">
+                    <!-- About -->
+                    <div class="about-content-col">
+                        <div class="about-profile-card reveal">
+                            <div class="about-photo-wrapper">
+                                <img src="profile.png" alt="Nandakishor Kalagarla" class="about-photo-img">
+                                <div class="about-photo-overlay"></div>
+                                <div class="about-photo-tag">
+                                    <span class="tag-status-dot"></span>
+                                    <span>AI Developer &amp; Junior AI Engineer</span>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="section-title reveal">About Me</h2>
+                        <p class="about-text reveal reveal-delay-1">
+                            I am a B.Tech student in Artificial Intelligence and Machine Learning at Kakinada Institute
+                            of Engineering
+                            and Technology. I'm focused on becoming an AI Developer / Junior AI Engineer, with hands-on
+                            learning in
+                            Python, SQL, Machine Learning, Generative AI, RAG, LLMs, and AI application development.
+                        </p>
+                        <p class="about-text reveal reveal-delay-2">
+                            My goal is to build real-world AI solutions that solve practical problems. I have experience
+                            building an
+                            AI-based chatbot using RAG and AI APIs, and I'm continuously expanding my knowledge in the
+                            AI/ML space.
+                        </p>
+
+                        <div class="about-mini-cards reveal reveal-delay-3">
+                            <div class="about-mini-card">
+                                <span class="mini-icon">🧠</span> AI & ML Enthusiast
+                            </div>
+                            <div class="about-mini-card">
+                                <span class="mini-icon">🔍</span> Problem Solver
+                            </div>
+                            <div class="about-mini-card">
+                                <span class="mini-icon">🚀</span> Quick Learner
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div id="skills" aria-label="Skills">
+                        <h2 class="section-title reveal">My Skills</h2>
+
+                        <div class="skills-filter reveal reveal-delay-1">
+                            <button class="skills-filter-btn active" data-filter="all">All</button>
+                            <button class="skills-filter-btn" data-filter="programming">Programming</button>
+                            <button class="skills-filter-btn" data-filter="web">Web</button>
+                            <button class="skills-filter-btn" data-filter="database">Database</button>
+                            <button class="skills-filter-btn" data-filter="aiml">AI/ML</button>
+                            <button class="skills-filter-btn" data-filter="soft">Soft Skills</button>
+                        </div>
+
+                        <div class="skills-grid reveal reveal-delay-2" id="skillsGrid">
+                            <!-- Programming -->
+                            <div class="skill-card" data-category="programming">
+                                <span class="skill-card-icon"><i class="fab fa-python"></i></span>
+                                <div class="skill-card-name">Python</div>
+                                <div class="skill-card-level">Hands-on</div>
+                            </div>
+
+                            <!-- AI/ML -->
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-brain"></i></span>
+                                <div class="skill-card-name">Machine Learning</div>
+                                <div class="skill-card-level">Learning</div>
+                            </div>
+
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-robot"></i></span>
+                                <div class="skill-card-name">Generative AI</div>
+                                <div class="skill-card-level">Learning</div>
+                            </div>
+
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-link"></i></span>
+                                <div class="skill-card-name">RAG</div>
+                                <div class="skill-card-level">Hands-on</div>
+                            </div>
+
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-plug"></i></span>
+                                <div class="skill-card-name">AI APIs</div>
+                                <div class="skill-card-level">Working Knowledge</div>
+                            </div>
+
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-comments"></i></span>
+                                <div class="skill-card-name">Chatbots</div>
+                                <div class="skill-card-level">Hands-on</div>
+                            </div>
+
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-chart-line"></i></span>
+                                <div class="skill-card-name">Data Visualization</div>
+                                <div class="skill-card-level">Foundation</div>
+                            </div>
+
+                            <div class="skill-card" data-category="aiml">
+                                <span class="skill-card-icon"><i class="fas fa-database"></i></span>
+                                <div class="skill-card-name">Data Processing</div>
+                                <div class="skill-card-level">Foundation</div>
+                            </div>
+
+                            <!-- Web -->
+                            <div class="skill-card" data-category="web">
+                                <span class="skill-card-icon"><i class="fab fa-html5"></i></span>
+                                <div class="skill-card-name">HTML</div>
+                                <div class="skill-card-level">Working Knowledge</div>
+                            </div>
+
+                            <div class="skill-card" data-category="web">
+                                <span class="skill-card-icon"><i class="fab fa-css3-alt"></i></span>
+                                <div class="skill-card-name">CSS</div>
+                                <div class="skill-card-level">Working Knowledge</div>
+                            </div>
+
+                            <div class="skill-card" data-category="web">
+                                <span class="skill-card-icon"><i class="fab fa-js-square"></i></span>
+                                <div class="skill-card-name">JavaScript</div>
+                                <div class="skill-card-level">Foundation</div>
+                            </div>
+
+                            <!-- Database -->
+                            <div class="skill-card" data-category="database">
+                                <span class="skill-card-icon"><i class="fas fa-server"></i></span>
+                                <div class="skill-card-name">SQL</div>
+                                <div class="skill-card-level">Foundation</div>
+                            </div>
+
+                            <!-- Soft Skills -->
+                            <div class="skill-card" data-category="soft">
+                                <span class="skill-card-icon">🧩</span>
+                                <div class="skill-card-name">Problem Solving</div>
+                                <div class="skill-card-level">Strong</div>
+                            </div>
+
+                            <div class="skill-card" data-category="soft">
+                                <span class="skill-card-icon">🤝</span>
+                                <div class="skill-card-name">Team Collaboration</div>
+                                <div class="skill-card-level">Strong</div>
+                            </div>
+
+                            <div class="skill-card" data-category="soft">
+                                <span class="skill-card-icon">📚</span>
+                                <div class="skill-card-name">Quick Learner</div>
+                                <div class="skill-card-level">Strong</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+         FEATURED PROJECT — DARK SECTION
+         ══════════════════════════════════════════════════════════ -->
+        <section class="featured-project-section" id="projects" aria-label="Featured Project">
+            <div class="section-container">
+                <div class="section-label reveal">
+                    <span class="section-label-line"></span> Featured Project
+                </div>
+
+                <div class="featured-project-grid">
+                    <!-- Dashboard Mockup -->
+                    <div class="project-dashboard reveal" id="projectDashboard">
+                        <div class="project-dash-header">
+                            <div class="project-dash-dot"></div>
+                            <div class="project-dash-dot"></div>
+                            <div class="project-dash-dot"></div>
+                            <span class="project-dash-title">Virtual HR</span>
+                        </div>
+                        <div class="project-dash-body">
+                            <div class="project-dash-label">Ask Your Policy Question</div>
+                            <div class="project-dash-input">What is the leave policy for full-time employees?</div>
+                            <div class="project-dash-response">
+                                <div class="project-dash-response-label">✨ AI Response</div>
+                                <div class="project-dash-response-text">
+                                    Based on the company guidelines document (Section 3.2), full-time employees are
+                                    entitled to 24 days of
+                                    annual leave per year. This includes casual leave and earned leave...
+                                </div>
+                            </div>
+                            <div class="project-dash-sources">
+                                <div class="project-dash-source">📄 Leave_Policy.pdf</div>
+                                <div class="project-dash-source">📋 HR_Guidelines_v3.pdf</div>
+                                <div class="project-dash-source">📑 Employee_Handbook.pdf</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Info -->
+                    <div>
+                        <h2 class="project-info-title reveal reveal-delay-1">
+                            Virtual HR<br>Guidelines & Policy Support
+                        </h2>
+                        <p class="project-info-desc reveal reveal-delay-2">
+                            AI-based chatbot that helps employees access company policies and guidelines using RAG and
+                            AI APIs. It
+                            answers questions from uploaded documents with accurate, context-aware responses.
+                        </p>
+                        <div class="project-tech-badges reveal reveal-delay-3">
+                            <span class="project-tech-badge">RAG</span>
+                            <span class="project-tech-badge">AI APIs</span>
+                            <span class="project-tech-badge">Python</span>
+                            <span class="project-tech-badge">Document Q&A</span>
+                            <span class="project-tech-badge">Chatbot</span>
+                        </div>
+                        <div class="project-buttons reveal reveal-delay-4">
+                            <!-- REPLACE: Add actual project link -->
+                            <button class="project-btn project-btn-primary" id="viewProjectBtn"
+                                aria-label="View project details">
+                                View Project <span>→</span>
+                            </button>
+                            <!-- Actual GitHub link -->
+                            <a href="https://github.com/Nandakishor999/Virtual-HR" target="_blank" rel="noopener"
+                                class="project-btn project-btn-secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RAG Flow Visualization -->
+                <div class="rag-flow reveal reveal-delay-2">
+                    <div class="rag-flow-step">
+                        <div class="rag-flow-icon">📄</div>
+                        <span class="rag-flow-label">Documents</span>
+                    </div>
+                    <span class="rag-flow-arrow">→</span>
+                    <div class="rag-flow-step">
+                        <div class="rag-flow-icon">🔍</div>
+                        <span class="rag-flow-label">Retrieval</span>
+                    </div>
+                    <span class="rag-flow-arrow">→</span>
+                    <div class="rag-flow-step">
+                        <div class="rag-flow-icon">🔗</div>
+                        <span class="rag-flow-label">RAG</span>
+                    </div>
+                    <span class="rag-flow-arrow">→</span>
+                    <div class="rag-flow-step">
+                        <div class="rag-flow-icon">🧠</div>
+                        <span class="rag-flow-label">LLM / AI API</span>
+                    </div>
+                    <span class="rag-flow-arrow">→</span>
+                    <div class="rag-flow-step">
+                        <div class="rag-flow-icon">✅</div>
+                        <span class="rag-flow-label">Answer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+         EXPERIENCE / TRAINING
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section" id="experience" aria-label="Experience and Training">
+            <div class="section-container">
+                <div class="section-label reveal">
+                    <span class="section-label-line"></span> Experience
+                </div>
+                <h2 class="section-title reveal">Training & Experience</h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    Building a strong foundation in AI and Machine Learning through structured programs and hands-on
+                    projects.
                 </p>
 
-                <div class="home-buttons">
-                    <a href="#projects" class="btn primary-btn">View Projects</a>
-                    <a href="#contact" class="btn secondary-btn">Let&apos;s Connect</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section hidden">
-            <h2 class="section-title">About Me</h2>
-
-            <div class="about-container">
-                <div class="glass-card mb-30">
-                    <p>
-                        I am a Final Year B.Tech student in Artificial Intelligence and Machine Learning
-                        at Kakinada Institute of Engineering and Technology. Focused on becoming
-                        an AI Developer / Junior AI Engineer.
-                    </p>
-                    <p>
-                        I am learning Python, SQL, Machine Learning, Generative AI, RAG, LLMs,
-                        and AI application development. My goal is to build real-world
-                        AI solutions that solve practical problems.
-                    </p>
-                </div>
-
-                <div class="about-cards">
-                    <div class="glass-card about-card">
-                        <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
-                        <h3>AI Development</h3>
-                        <p>Building AI-powered applications using modern AI tools and APIs.</p>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Jul 2024 – Apr 2025</div>
+                        <h3 class="timeline-title">Foundations of Modern Machine Learning (FMML)</h3>
+                        <p class="timeline-org">IIIT Hyderabad / iHub Data</p>
+                        <p class="timeline-desc">
+                            Completed comprehensive training focused on machine learning fundamentals, data
+                            preprocessing, model
+                            evaluation, and practical ML applications.
+                        </p>
+                        <span class="timeline-badge">Machine Learning</span>
                     </div>
 
-                    <div class="glass-card about-card">
-                        <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
-                        <h3>Machine Learning</h3>
-                        <p>Learning ML fundamentals, preprocessing, and model evaluation.</p>
-                    </div>
-
-                    <div class="glass-card about-card">
-                        <div class="icon-wrapper"><i class="fas fa-comments"></i></div>
-                        <h3>AI Chatbots</h3>
-                        <p>Creating chatbot systems using RAG, LLMs.</p>
+                    <div class="timeline-item reveal reveal-delay-1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 – Present</div>
+                        <h3 class="timeline-title">AI/ML Self-Learning & Projects</h3>
+                        <p class="timeline-org">Independent Study</p>
+                        <p class="timeline-desc">
+                            Building AI-powered applications, learning Python, Generative AI, RAG, and exploring AI APIs
+                            through
+                            hands-on projects including the Virtual HR chatbot.
+                        </p>
+                        <span class="timeline-badge">AI Development</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section hidden">
-            <h2 class="section-title">Technical Skills</h2>
+        <!-- ══════════════════════════════════════════════════════════
+         EDUCATION
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section" id="education" aria-label="Education">
+            <div class="section-container">
+                <div class="section-label reveal">
+                    <span class="section-label-line"></span> Education
+                </div>
+                <h2 class="section-title reveal">Education</h2>
 
-            <div class="skills-grid">
-                <div class="glass-card skill-card">
-                    <i class="fab fa-python"></i>
-                    <h3>Python</h3>
-                    <p>Programming, automation & AI.</p>
-                </div>
-                <div class="glass-card skill-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Machine Learning</h3>
-                    <p>Supervised learning & evaluation.</p>
-                </div>
-                <div class="glass-card skill-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Generative AI</h3>
-                    <p>LLMs, prompts, Gemini API.</p>
-                </div>
-                <div class="glass-card skill-card">
-                    <i class="fas fa-comments"></i>
-                    <h3>Chatbots</h3>
-                    <p>Smart assistants & RAG systems.</p>
-                </div>
-                <div class="glass-card skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>HTML & CSS</h3>
-                    <p>Responsive modern websites.</p>
-                </div>
-                <div class="glass-card skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>SQL</h3>
-                    <p>Database queries & management.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section hidden">
-            <h2 class="section-title">Projects</h2>
-
-            <div class="projects-container">
-                <div class="glass-card project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-building-user"></i>
+                <div class="timeline">
+                    <!-- B.Tech -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Sep 2023 – Jun 2027</div>
+                        <h3 class="timeline-title">Bachelor of Technology (B.Tech)</h3>
+                        <p class="timeline-org">Kakinada Institute of Engineering and Technology — CSE (AI &amp; Machine
+                            Learning)</p>
+                        <p class="timeline-desc">
+                            Specializing in Artificial Intelligence and Machine Learning. CGPA: 7.77 / 10. University:
+                            JNTUK.
+                        </p>
+                        <span class="timeline-badge">B.Tech AI/ML</span>
                     </div>
-                    <h3>Smart Navigator for Guidelines and Policy Support</h3>
-                    <p>
-                        An AI-based chatbot system that helps employees access company policies
-                        and guidelines using document-based question answering.
-                    </p>
-                    <div class="tech-stack">
-                        <span>Python</span>
-                        <span>RAG</span>
-                        <span>Gemini API</span>
+
+                    <!-- Intermediate -->
+                    <div class="timeline-item reveal reveal-delay-1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2021 – 2023</div>
+                        <h3 class="timeline-title">Intermediate (MPC)</h3>
+                        <p class="timeline-org">Don Bosco Junior College</p>
+                        <p class="timeline-desc">Percentage: 58.9%</p>
+                        <span class="timeline-badge">Intermediate</span>
+                    </div>
+
+                    <!-- 10th Class -->
+                    <div class="timeline-item reveal reveal-delay-2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020 – 2021</div>
+                        <h3 class="timeline-title">10th Class (SSC)</h3>
+                        <p class="timeline-org">St. Mary's E.M. School</p>
+                        <p class="timeline-desc">Percentage: 95.1%</p>
+                        <span class="timeline-badge">SSC</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education & Training Section -->
-        <section id="education" class="section hidden">
-            <h2 class="section-title">Education & Certifications</h2>
-
-            <div class="education-container">
-                <div class="glass-card education-card">
-                    <div class="date-badge">2023 - 2027</div>
-                    <h3>B.Tech in AIML</h3>
-                    <h4>Kakinada Institute of Engineering and Technology</h4>
-                    <p>CGPA: 7.77 / 10</p>
+        <!-- ══════════════════════════════════════════════════════════
+         TECH STACK — FULL WIDTH DARK
+         ══════════════════════════════════════════════════════════ -->
+        <section class="tech-section" aria-label="Technology Stack">
+            <div class="section-container" style="text-align:center;">
+                <div class="section-label reveal" style="justify-content:center;">
+                    <span class="section-label-line"></span> Tech Stack
                 </div>
+                <h2 class="section-title reveal" style="color:#fff;">Tech I Work With</h2>
+            </div>
 
-                <div class="glass-card education-card">
-                    <div class="date-badge">2024 - 2025</div>
-                    <h3>Foundations of Modern Machine Learning</h3>
-                    <h4>IIIT Hyderabad / iHub Data</h4>
-                    <p>Completed FMML training focused on machine learning fundamentals.</p>
+            <div class="tech-line reveal"></div>
+
+            <div class="tech-grid reveal reveal-delay-1">
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fab fa-python"></i></span>
+                    <span class="tech-item-name">Python</span>
+                    <span class="tech-item-desc">Primary programming language</span>
                 </div>
-
-                 <div class="glass-card education-card">
-                    <div class="date-badge">Certifications</div>
-                    <h3>Various Online Courses</h3>
-                    <p>Basics of Python (Infosys), DSA in Python (SkillUp).</p>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fas fa-brain"></i></span>
+                    <span class="tech-item-name">Machine Learning</span>
+                    <span class="tech-item-desc">Supervised learning & evaluation</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fas fa-robot"></i></span>
+                    <span class="tech-item-name">Generative AI</span>
+                    <span class="tech-item-desc">LLMs & prompt engineering</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fas fa-link"></i></span>
+                    <span class="tech-item-name">RAG</span>
+                    <span class="tech-item-desc">Retrieval Augmented Generation</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fas fa-database"></i></span>
+                    <span class="tech-item-name">SQL</span>
+                    <span class="tech-item-desc">Database queries & management</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fab fa-html5"></i></span>
+                    <span class="tech-item-name">HTML</span>
+                    <span class="tech-item-desc">Semantic web structure</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fab fa-css3-alt"></i></span>
+                    <span class="tech-item-name">CSS</span>
+                    <span class="tech-item-desc">Styling & responsive design</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fas fa-plug"></i></span>
+                    <span class="tech-item-name">AI APIs</span>
+                    <span class="tech-item-desc">Gemini & AI integrations</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-item-icon"><i class="fas fa-chart-bar"></i></span>
+                    <span class="tech-item-name">Data Viz</span>
+                    <span class="tech-item-desc">Charts & data visualization</span>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section hidden">
-            <h2 class="section-title">Contact Me</h2>
-            <p class="contact-text">
-                I am open to AI Developer, Junior AI Engineer, and AI Internship opportunities.
-            </p>
+        <!-- ══════════════════════════════════════════════════════════
+         CERTIFICATIONS
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section" id="certifications" aria-label="Certifications">
+            <div class="section-container">
+                <div class="section-label reveal">
+                    <span class="section-label-line"></span> Certifications
+                </div>
+                <h2 class="section-title reveal">Certifications</h2>
 
-            <div class="contact-container">
-                <a href="mailto:kalagarlanandakishor@gmail.com" class="glass-card contact-card">
-                    <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                    <h3>Email</h3>
-                    <p>kalagarlanandakishor@gmail.com</p>
-                </a>
-                <a href="https://github.com/Nandakishor999" target="_blank" class="glass-card contact-card">
-                    <div class="icon-box"><i class="fab fa-github"></i></div>
-                    <h3>GitHub</h3>
-                    <p>View My Projects</p>
-                </a>
-                <a href="https://www.linkedin.com/in/nandakishor-kalagarla-a8b33b307/" target="_blank" class="glass-card contact-card">
-                    <div class="icon-box"><i class="fab fa-linkedin"></i></div>
-                    <h3>LinkedIn</h3>
-                    <p>Connect With Me</p>
-                </a>
+                <div class="cert-grid">
+                    <div class="cert-card reveal">
+                        <div class="cert-icon">🧠</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Foundations of Modern Machine Learning (FMML)</div>
+                            <div class="cert-issuer">iHub-Data, IIIT Hyderabad</div>
+                            <div class="cert-verified"><i class="fas fa-check-circle"></i> Verified</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card reveal reveal-delay-1">
+                        <div class="cert-icon">🐍</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Basics of Python</div>
+                            <div class="cert-issuer">Infosys Springboard</div>
+                            <div class="cert-verified"><i class="fas fa-check-circle"></i> Verified</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card reveal reveal-delay-2">
+                        <div class="cert-icon">📊</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Data Analytics Internship</div>
+                            <div class="cert-issuer">EduSkills</div>
+                            <div class="cert-verified"><i class="fas fa-check-circle"></i> Verified</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card reveal reveal-delay-3">
+                        <div class="cert-icon">🔢</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Data Structures and Algorithms in Python</div>
+                            <div class="cert-issuer">SkillUp</div>
+                            <div class="cert-verified"><i class="fas fa-check-circle"></i> Verified</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
-            <i class="fas fa-chevron-up"></i>
-        </button>
+        <!-- ══════════════════════════════════════════════════════════
+         AI JOURNEY ROADMAP
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section" aria-label="AI Journey">
+            <div class="section-container">
+                <div class="section-label reveal">
+                    <span class="section-label-line"></span> Roadmap
+                </div>
+                <h2 class="section-title reveal">My AI Journey</h2>
+                <p class="section-subtitle reveal reveal-delay-1">
+                    From learning Python to building AI-powered applications — here's my path.
+                </p>
+
+                <div class="journey-track reveal reveal-delay-2">
+                    <div class="journey-stage">
+                        <span class="journey-stage-icon">🐍</span>
+                        <div class="journey-stage-name">Python</div>
+                        <div class="journey-stage-tech">Basics, OOP, Libraries</div>
+                    </div>
+                    <div class="journey-connector"></div>
+                    <div class="journey-stage">
+                        <span class="journey-stage-icon">🧠</span>
+                        <div class="journey-stage-name">Machine Learning</div>
+                        <div class="journey-stage-tech">FMML, Supervised Learning</div>
+                    </div>
+                    <div class="journey-connector"></div>
+                    <div class="journey-stage">
+                        <span class="journey-stage-icon">🤖</span>
+                        <div class="journey-stage-name">Generative AI</div>
+                        <div class="journey-stage-tech">LLMs, Prompt Engineering</div>
+                    </div>
+                    <div class="journey-connector"></div>
+                    <div class="journey-stage">
+                        <span class="journey-stage-icon">🔗</span>
+                        <div class="journey-stage-name">RAG</div>
+                        <div class="journey-stage-tech">Document Retrieval, Context</div>
+                    </div>
+                    <div class="journey-connector"></div>
+                    <div class="journey-stage">
+                        <span class="journey-stage-icon">💡</span>
+                        <div class="journey-stage-name">AI Applications</div>
+                        <div class="journey-stage-tech">Chatbots, Virtual HR</div>
+                    </div>
+                    <div class="journey-connector"></div>
+                    <div class="journey-stage">
+                        <span class="journey-stage-icon">🚀</span>
+                        <div class="journey-stage-name">AI Engineer</div>
+                        <div class="journey-stage-tech">Career Goal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+         WHAT I'M EXPLORING
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section" aria-label="Exploring">
+            <div class="section-container" style="text-align:center;">
+                <div class="section-label reveal" style="justify-content:center;">
+                    <span class="section-label-line"></span> Exploring
+                </div>
+                <h2 class="section-title reveal">What I'm Exploring</h2>
+
+                <div class="explore-tags reveal reveal-delay-1">
+                    <span class="explore-tag" data-tag="aiml">Generative AI</span>
+                    <span class="explore-tag" data-tag="aiml">RAG</span>
+                    <span class="explore-tag" data-tag="aiml">AI APIs</span>
+                    <span class="explore-tag" data-tag="aiml">Chatbots</span>
+                    <span class="explore-tag" data-tag="aiml">LLMs</span>
+                    <span class="explore-tag" data-tag="aiml">Machine Learning</span>
+                    <span class="explore-tag" data-tag="programming">Python</span>
+                    <span class="explore-tag" data-tag="aiml">Data Visualization</span>
+                    <span class="explore-tag" data-tag="database">SQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+         CONTACT
+         ══════════════════════════════════════════════════════════ -->
+        <section class="section contact-section" id="contact" aria-label="Contact">
+            <div class="section-container" style="text-align:center;">
+                <div class="section-label reveal" style="justify-content:center;">
+                    <span class="section-label-line"></span> Contact
+                </div>
+                <h2 class="contact-heading reveal">
+                    Let's Build Something<br><span class="hl-teal">Intelligent</span> Together.
+                </h2>
+                <p class="contact-desc reveal reveal-delay-1">
+                    I'm open to opportunities to contribute to real-world AI projects, internships, and software
+                    development
+                    opportunities.
+                </p>
+                <div class="contact-buttons reveal reveal-delay-2">
+                    <a href="mailto:kalagarlanandakishor@gmail.com" class="contact-btn contact-btn-email">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/nandakishor-kalagarla-a8b33b307/" target="_blank"
+                        rel="noopener" class="contact-btn contact-btn-linkedin">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/Nandakishor999" target="_blank" rel="noopener"
+                        class="contact-btn contact-btn-github">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; <span class="current-year">2026</span> Nandakishor Kalagarla | AI Engineer</p>
+    <!-- ══════════════════════════════════════════════════════════
+       FOOTER — DARK
+       ══════════════════════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <!-- Brand -->
+            <div>
+                <div class="footer-brand-logo">NK<span class="dot">.</span></div>
+                <div class="footer-brand-name">Nandakishor Kalagarla</div>
+                <div class="footer-brand-title">Aspiring AI Developer / Junior AI Engineer</div>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <div class="footer-heading">Navigation</div>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+
+            <!-- Social -->
+            <div>
+                <div class="footer-heading">Connect</div>
+                <div class="footer-social">
+                    <a href="https://github.com/Nandakishor999" target="_blank" rel="noopener" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/nandakishor-kalagarla-a8b33b307/" target="_blank"
+                        rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:kalagarlanandakishor@gmail.com" aria-label="Email"><i
+                            class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 Nandakishor Kalagarla. All rights reserved.</span>
+            <span>Built with ❤️ and AI passion</span>
+        </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ══════════════════════════════════════════════════════════
+       PROJECT MODAL
+       ══════════════════════════════════════════════════════════ -->
+    <div class="modal-overlay" id="projectModal" role="dialog" aria-label="Project details" aria-hidden="true">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <h3 class="modal-title">Virtual HR — Guidelines & Policy Support</h3>
+
+            <div class="modal-section-heading">Problem</div>
+            <p class="modal-text">Employees often struggle to find specific answers within lengthy company policy
+                documents,
+                leading to wasted time and potential compliance issues.</p>
+
+            <div class="modal-section-heading">Solution</div>
+            <p class="modal-text">An AI-based chatbot that uses Retrieval Augmented Generation (RAG) to intelligently
+                search
+                through uploaded company documents and provide accurate, context-aware answers to employee questions.
+            </p>
+
+            <div class="modal-section-heading">Technology</div>
+            <div class="modal-tech">
+                <span>Python</span>
+                <span>RAG</span>
+                <span>AI APIs</span>
+                <span>Document Processing</span>
+                <span>Chatbot</span>
+            </div>
+
+            <div class="modal-section-heading">Features</div>
+            <ul class="modal-features">
+                <li>Upload and process company policy documents</li>
+                <li>Natural language question answering</li>
+                <li>Context-aware responses using RAG</li>
+                <li>Source document references in answers</li>
+                <li>AI API integration for intelligent responses</li>
+            </ul>
+
+            <div class="modal-section-heading">Goal</div>
+            <p class="modal-text">To help employees quickly access accurate information from company policies and
+                guidelines,
+                improving efficiency and compliance.</p>
+
+            <div class="modal-section-heading">Repository</div>
+            <p class="modal-text" style="margin-bottom:0;">
+                <a href="https://github.com/Nandakishor999/Virtual-HR" target="_blank" rel="noopener" style="color:var(--teal); font-weight:600; display:inline-flex; align-items:center; gap:8px;">
+                    <i class="fab fa-github"></i> Explore Virtual-HR on GitHub &rarr;
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
+
 </html>
